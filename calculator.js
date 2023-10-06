@@ -13,7 +13,6 @@ buttons.forEach((button)=>{
             const delimiters = /[+\/x-]/;
             let numArray = currentOperand.split(delimiters);
             let numbers = numArray.map(Number);
-            console.log(numbers);
             let operators =[]
             for(let i = 0; i< currentOperand.length; i++) {
                 if(["x", "/", "+", "-"].includes(currentOperand[i])) {
@@ -39,8 +38,10 @@ buttons.forEach((button)=>{
 
             
             }
+            display.textContent = `${numbers[numbers.length-1]}`;
+            x = [numbers[numbers.length -1]];
+             
             
-            console.log(numbers[numbers.length -1]);
 
         }
         
