@@ -11,7 +11,7 @@ const del = document.querySelector('#delete');
 const clear = document.querySelector('#clear');
 
 
-let firstNumber = '';
+let firstNumber = '0';
 let secondNumber = '';
 let operator = '';
 
@@ -86,7 +86,7 @@ clear.addEventListener('click', ()=>{
 
 function wipe() {
     operator = '';
-    firstNumber = '';
+    firstNumber = '0';
     secondNumber ='';
     displayOne.textContent ='0';
     displayTwo.textContent = '0';
