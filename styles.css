@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    height: auto;
+    font-size: 20px;  
+  
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+main {
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width:18rem;
+    height: auto;
+    
+}
+
+
+
+#display {
+
+    text-align: end;
+    border: solid 1px black;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.one {
+    margin:10px 0;
+    font-size: 1.1rem;
+}
+
+.two {
+    margin:10px 0;
+    font-size: 1.5rem;
+}
+
+
+#remove {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0 1rem 0;
+}
+
+.remove {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48%;
+    cursor: pointer;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 5px 0;
+    height: 2.5rem;
+
+}
+
+
+
+
+#numberpads {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 0.5rem;
+    grid-row-gap: 0.6rem;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+#numberpads > button {
+    height: 2.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+}

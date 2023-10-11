@@ -1,3 +1,5 @@
+
+
 const buttons = document.querySelectorAll('.buttons');
 const display = document.querySelector('#display');
 const displayOne = document.querySelector('.one');
@@ -9,133 +11,34 @@ const del = document.querySelector('#delete');
 const clear = document.querySelector('#clear');
 
 
-//First Take 
-// let x = [];
-// let num1 ; 
-// let num2 ;
-// let currentOperand = '';
-// buttons.forEach((button)=>{
-//     button.addEventListener('click', (e)=> {
-//         if(e.target.textContent != "=") {
-//             displayTwo.textContent = "-";
-//             x.push(e.target.textContent);
-//             currentEquation = x.join('');
-//             displayOne.textContent = currentEquation;
-        
-//         } else if(e.target.textContent === "="){
-//             const regex = /[+\/x-]/;
-//             let numArray = currentEquation.split(regex);
-//             let numbers = numArray.map(Number);
-//             let operators =[]
-//             for(let i = 0; i< currentEquation.length; i++) {
-//                 if(["x", "/", "+", "-"].includes(currentEquation[i])) {
-//                     operators.push(currentEquation[i]); 
-                
-//                 }
-//             };
-//             console.log(operators);
-//             for(let i = 0; i< operators.length; i++) {
-//                 if(operators[i]== "x") {
-//                     numbers[i+1] = numbers[i] * numbers[i+1];
-                    
-//                 } else if (operators[i]== "-") {
-//                     numbers[i+1] = numbers[i] - numbers[i+1];
-                    
-//                 } else if (operators[i]== "/") {
-//                     numbers[i+1] = numbers[i] / numbers[i+1];
-                    
-//                 } else if (operators[i]== "+") {
-//                     numbers[i+1] = numbers[i] + numbers[i+1];
-                    
-//                 } else if (operators[i] == "-" && operators[i+1] == "-") {
-//                     operators[i] = "+";
-//                     operators.slice(i)
-//                     numbers[i+1] = numbers[i] + numbers[i+1];
-//                 }
-
-            
-//             }
-//             if(numbers[numbers.length-1] === Infinity) {
-//                 displayTwo.textContent = "Dividing by Zero is just not Legal at all";
-//                 x = [];
-//             } else {
-//                 displayTwo.textContent = `${numbers[numbers.length-1]}`;
-//                 x = [numbers[numbers.length -1]];
-//             }
-
-            
-            
-            
-             
-            
-
-//         }
-        
-
-//     })
-// })
-
-
-//Second Take
-
 let firstNumber = '';
 let secondNumber = '';
 let operator = '';
 
 numButtons.forEach((button) => {
     button.addEventListener('click', (e)=> {        
-        if(operator === '') {
-            if(displayOne.textContent === '0') {
-                displayOne.textContent = '';
-            }
-            if(displayTwo.textContent != '' && displayTwo.textContent != '0') {
-                firstNumber = '';
-                displayOne.textContent = '';
-                displayTwo.textContent = '0';
-            }
-            firstNumber += e.target.textContent;
-        } else {
-            secondNumber += e.target.textContent;
-        }
-        displayOne.textContent += e.target.textContent;
+        numbers(e.target.textContent);
+        e.target.blur();
     } )
+
 })
 
 opButtons.forEach((button) => {
     
-    button.addEventListener('click', (e) => {
-        // if(!operatorClicked) {
-        //     operator = e.target.textContent;
-        //     displayOne.textContent += operator;
-        //     operatorClicked = true; 
-
-        //     if( displayTwo.textContent != '0' && displayTwo.textContent != '') {
-        //         displayTwo.textContent = '-';
-        //         displayOne.textContent = firstNumber + operator;
-        // }
-            
-        //  }
-
-        if(operator != '') {
-            operate(firstNumber, secondNumber);
-            operator = e.target.textContent;
-            displayOne.textContent = firstNumber + operator;
-            displayTwo.textContent = firstNumber ;
-        } else if(displayTwo.textContent != '0' && displayTwo.textContent != '') {
-            operator = e.target.textContent;
-            displayTwo.textContent = '0';
-            displayOne.textContent = firstNumber + operator;
-        } else {
-            operator = e.target.textContent;
-            displayOne.textContent += operator;
-            
-        }
-    })
+    button.addEventListener('click', (e)=>{
+        operateBtn(e.target.textContent);
+        e.target.blur()
+    } );
 })
+
+
+
 calculate.addEventListener('click', ()=> {
     operate(firstNumber, secondNumber);
     
 })
+
+
 
 function operate(x, y) {
     y = parseFloat(y);
@@ -154,7 +57,7 @@ function operate(x, y) {
         } else if (operator === "x") {
             firstNumber = x*y;
             
-        } else if (operator === "/") {
+        } else if (operator === "÷") {
             firstNumber = x/y;
             if(firstNumber === Infinity ) {
                 displayTwo.textContent = "Can't divide by 0";
@@ -169,11 +72,73 @@ function operate(x, y) {
     }
     
     operator = '';
+    return 1;
 }
 
 del.addEventListener('click', ()=>{
+    backspace();
+})
+
+clear.addEventListener('click', ()=>{
+    wipe();
     
-        if(secondNumber === '' && operator ==='') {
+})
+
+function wipe() {
+    operator = '';
+    firstNumber = '';
+    secondNumber ='';
+    displayOne.textContent ='0';
+    displayTwo.textContent = '0';
+}
+ 
+function operateBtn(op) {
+    
+    if(operator != '') {
+        operate(firstNumber, secondNumber);
+        operator = op;
+        displayOne.textContent = firstNumber + operator;
+        displayTwo.textContent = firstNumber ;
+    } else if(displayTwo.textContent != '0' && displayTwo.textContent != '') {
+        operator = op;
+        displayTwo.textContent = '0';
+        displayOne.textContent = firstNumber + operator;
+    } else {
+        operator = op;
+        displayOne.textContent += operator;
+        
+    }
+    
+}
+
+function numbers(num) {
+    if(operator === '') {
+        if(displayOne.textContent === '0') {
+            displayOne.textContent = '';
+        }
+        if(displayTwo.textContent != '' && displayTwo.textContent != '0') {
+            firstNumber = '';
+            displayOne.textContent = '';
+            displayTwo.textContent = '0';
+        }
+        
+            firstNumber += num;
+            
+        
+    } else {
+       
+            secondNumber += num;
+            
+        
+        
+    }
+    displayOne.textContent += num;
+    
+    
+}
+
+function backspace() {
+    if(secondNumber === '' && operator ==='') {
         firstNumber = firstNumber.slice(0,-1);
         displayOne.textContent = displayOne.textContent.slice(0,-1);
             if(firstNumber === '') {
@@ -188,15 +153,24 @@ del.addEventListener('click', ()=>{
             secondNumber = secondNumber.slice(0,-1);
             displayOne.textContent = displayOne.textContent.slice(0,-1);
         }
-    
-    
+}
+
+
+
+document.addEventListener('keydown', (e)=> {
+    if(e.key==='Backspace') {
+        backspace();
+    } else if(e.key==='Escape') {
+       wipe();
+    } else if (e.key ==='Enter') {
+        operate(firstNumber, secondNumber);
+    } else if(e.key === '+' || e.key === '-' || e.key === 'x') {
+        operateBtn(e.key);
+    } else if( e.key === '/') {
+        operateBtn('÷');
+    } else if(e.key >= 0 && e.key <= 9) {
+        numbers(e.key);
+    }
+
 })
 
-clear.addEventListener('click', ()=>{
-    operator = '';
-    firstNumber = '';
-    secondNumber ='';
-    displayOne.textContent ='0';
-    displayTwo.textContent = '0';
-    
-})
