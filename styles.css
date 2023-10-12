@@ -2,6 +2,7 @@
     box-sizing: border-box;
     height: auto;
     font-size: 20px;  
+    background-color: rgb(184, 217, 247);
   
 }
 
@@ -13,13 +14,16 @@ body {
 }
 
 main {
-    border: solid 1px black;
+    background-color: rgb(228, 228, 228);
+    box-shadow: 8px 4px 22px 7px rgba(48, 48, 48, 0.36);
+    
     border-radius: 15px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     width:18rem;
     height: auto;
+    box-shadow: ;
     
 }
 
@@ -28,7 +32,8 @@ main {
 #display {
 
     text-align: end;
-    border: solid 1px black;
+    border: solid 2px rgb(177, 177, 177);
+    box-shadow: inset 0px 0px 11px 3px rgba(156,156,156,0.5);
     border-radius: 10px;
     padding: 5px;
     margin-top: 1rem;
@@ -37,17 +42,20 @@ main {
 
 
 .one {
+    background-color: transparent;
     margin:10px 0;
     font-size: 1.1rem;
 }
 
 .two {
+    background-color: transparent;
     margin:10px 0;
     font-size: 1.5rem;
 }
 
 
 #remove {
+    background-color: inherit;
     display: flex;
     justify-content: space-between;
     margin: 2rem 0 1rem 0;
@@ -59,17 +67,28 @@ main {
     align-items: center;
     width: 48%;
     cursor: pointer;
-    border: solid 1px black;
+    box-shadow: 0px 3px 6px 1px rgba(182, 182, 182, 0.95);
     border-radius: 5px;
     padding: 5px 0;
     height: 2.5rem;
 
 }
 
+#clear  {
+    background-color: #ee6c4d;
+    border: solid 2px #da9989;
+}
+
+#delete {
+    background-color: #98c1d9;
+    border:solid 2px #adcbdf;
+}
+
 
 
 
 #numberpads {
+    background-color: inherit;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 0.5rem;
