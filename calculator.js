@@ -9,6 +9,7 @@ const opButtons = document.querySelectorAll('.operators');
 const calculate = document.querySelector('.calculate');
 const del = document.querySelector('#delete');
 const clear = document.querySelector('#clear');
+const remove = document.querySelectorAll('.remove');
 
 
 let firstNumber = '0';
@@ -158,19 +159,50 @@ function backspace() {
 
 
 document.addEventListener('keydown', (e)=> {
+    console.log(e.key);
     if(e.key==='Backspace') {
         backspace();
+        del.classList.add('removeclick');
     } else if(e.key==='Escape') {
        wipe();
-    } else if (e.key ==='Enter') {
+       clear.classList.add('removeclick');
+    } else if (e.key ==='Enter' || e.key === '=') {
         operate(firstNumber, secondNumber);
+        calculate.classList.add('reverseborder');
     } else if(e.key === '+' || e.key === '-' || e.key === 'x') {
         operateBtn(e.key);
+        let button = document.querySelector(`[data-key="${e.key}"]`);
+        button.classList.add('reverseborder');
     } else if( e.key === '/') {
         operateBtn('÷');
-    } else if(e.key >= 0 && e.key <= 9) {
+        let button = document.querySelector(`[data-key="${e.key}"]`);
+        button.classList.add('reverseborder');
+    } else if((e.key >= 0 && e.key <= 9) || e.key === '.') {
         numbers(e.key);
+        let button = document.querySelector(`[data-key="${e.key}"]`);
+        button.classList.add('reverseborder');
     }
 
+})
+
+document.addEventListener('keyup', (e)=> {
+    if(e.key==='Backspace') {
+        del.classList.remove('removeclick');
+    }else if(e.key==='Escape') {
+        clear.classList.remove('removeclick');
+    } else if((e.key >= 0 && e.key <= 9) || e.key === '.') {
+        
+        let button = document.querySelector(`[data-key="${e.key}"]`);
+        button.classList.remove('reverseborder')
+    } else if (e.key ==='Enter' || e.key === '=') {
+        calculate.classList.remove('reverseborder');
+    }else if(e.key === '+' || e.key === '-' || e.key === 'x') {
+        let button = document.querySelector(`[data-key="${e.key}"]`);
+        button.classList.remove('reverseborder');
+        } else if( e.key === '/') {
+            let button = document.querySelector(`[data-key="${e.key}"]`);
+            button.classList.remove('reverseborder');
+    }
+    
 })
 

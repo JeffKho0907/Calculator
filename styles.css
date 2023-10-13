@@ -1,8 +1,13 @@
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;500&display=swap');
+
 * {
+    font-family: 'IBM Plex Sans', sans-serif;
     box-sizing: border-box;
     height: auto;
     font-size: 20px;  
     background-color: rgb(184, 217, 247);
+  
   
 }
 
@@ -23,7 +28,7 @@ main {
     flex-direction: column;
     width:18rem;
     height: auto;
-    box-shadow: ;
+    
     
 }
 
@@ -45,7 +50,9 @@ main {
     background-color: transparent;
     margin:10px 0;
     font-size: 1.1rem;
+    
 }
+
 
 .two {
     background-color: transparent;
@@ -62,6 +69,7 @@ main {
 }
 
 .remove {
+    user-select: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,14 +82,25 @@ main {
 
 }
 
-#clear  {
-    background-color: #ee6c4d;
-    border: solid 2px #da9989;
+.remove:active {
+    box-shadow:  inset 0px 0px 12px -3px rgba(66,66,66,0.27);
+    font-size: 19px;
 }
 
+
+
+#clear  {
+    color:#E5E8ED;
+    background-color: #ee6c4d;
+    border: solid 2px #d8a498;
+}
+
+
+
 #delete {
-    background-color: #98c1d9;
-    border:solid 2px #adcbdf;
+    color: #ee6c4d;
+    background-color: #E5E8ED;
+    border:solid 2px #e7e8e9;
 }
 
 
@@ -98,7 +117,31 @@ main {
 }
 
 #numberpads > button {
+    color: rgb(235, 80, 80);
+    background-color: #919ba7;
     height: 2.3rem;
     border-radius: 5px;
     cursor: pointer;
+}
+
+#numberpads > button:active {
+    font-size: 19px;
+}
+
+
+::selection {
+    background-color: #E5E8ED;
+}
+
+.removeclick {
+    box-shadow: inset 0px 0px 12px -3px rgba(66,66,66,0.27);
+    font-size: 19px;
+}
+
+.reverseborder{
+    border: 2px solid black;
+    font-size: 19px;
+    border-bottom: 2px solid rgb(82, 82, 82);
+    border-right: 2px solid rgb(82, 82, 82);
+    
 }
